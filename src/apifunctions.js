@@ -1,3 +1,34 @@
+// Replace 'https://your-function-app.azurewebsites.net/api/your-function' with your actual Azure Function URL
+const functionUrl = 'https://black-field-03c1a4810.5.azurestaticapps.net/';
+
+// Example GET request
+fetch(functionUrl)
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data from Azure Function:', data);
+        // Process data as needed
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+// Example POST request
+fetch(functionUrl, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ /* Your request body */ })
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response from Azure Function:', data);
+        // Process response as needed
+    })
+    .catch(error => {
+        console.error('Error sending data:', error);
+    });
+
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
